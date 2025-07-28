@@ -16,7 +16,7 @@ for partition in "${partitions[@]}"; do
     usage=$(df -h "$partition" | awk 'NR==2 {gsub("%","",$5); print $5}')
     if [ "$usage" -ge "$threshold" ]; then
         subject="Disk Usage Alert: $partition at ${usage}%"
-        message="Warning: The partition $partition is at ${usage}% usage, which exceeds the threshold of ${threshold}%."
+        message="Warning: usage exceeds 80%"
         echo "$message" | mail -s "$subject" "$alert_email"
     fi
 done

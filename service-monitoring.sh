@@ -14,7 +14,7 @@ touch "$log_file"
 
 for service in "${services[@]}";
 do
-    if systemctl is-active --quiet "$service";
+    if systemctl is-active "$service";
      then
         echo "$service is up and running"
     else
